@@ -25,6 +25,7 @@ namespace game2048
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
         Model model = new Model(4);

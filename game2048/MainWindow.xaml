@@ -1,0 +1,140 @@
+﻿<Window x:Class="game2048.MainWindow" Background="#FFD4C6C6" KeyDown="Window_KeyDown" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:game2048"
+        mc:Ignorable="d"
+        Title="GAME 2048" Height="540" Width="550" WindowStyle="ToolWindow" FontSize="14">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+                <Setter Property="Control.FontSize" Value="20"/>
+                <Setter Property="Control.FontWeight" Value="Bold"/>
+                <Setter Property="Control.Height" Value="80"/>
+                <Setter Property="Control.Width" Value="120"/>
+                <Setter Property="Control.Background" Value="Gray"/>
+                <Setter Property="Control.Margin" Value="7"/>
+                <Setter Property="Control.BorderBrush" Value="Black"/>
+                <Setter Property="Content" Value="1"/>
+                
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Button.Content" Value="2" >
+                    <Setter Property="Control.Foreground" Value="White"></Setter>
+                    <Setter Property="Control.Background" Value="Gray"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="4">
+                    <Setter Property="Control.Foreground" Value="White"></Setter>
+                    <Setter Property="Control.Background" Value="#FFF7F75A"></Setter>
+
+                </Trigger>
+                <Trigger Property="Button.Content" Value="8">
+                    <Setter Property="Control.Foreground" Value="White"></Setter>
+                    <Setter Property="Control.Background" Value="#FFF3F31F"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="16">
+                    <Setter Property="Control.Foreground" Value="White"></Setter>
+                    <Setter Property="Control.Background" Value="#FFDC9457"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="32">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="#FFCB7227"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="64">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="128">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="256">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="512">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="1024">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="Button.Content" Value="2048">
+                    <Setter Property="Control.Foreground" Value="#FFF5760C"></Setter>
+                    <Setter Property="Control.Background" Value="Gold"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style >
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" ></RowDefinition>
+            <RowDefinition Height="350" ></RowDefinition>
+            <RowDefinition Height="50" ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="#FFD4C6C6" Grid.ColumnSpan="6" Width="539">
+            <StackPanel Margin="0" Orientation="Vertical" Width="265" DockPanel.Dock="Left"  >
+                <TextBlock TextAlignment="Center" Text="Score" Margin="120,15,0,0" Height="20" Width="100" Background="Gray" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Foreground="#FFFBFBFB" ></TextBlock>
+                <TextBlock  Name="score" Foreground="White" TextAlignment="Center" Height="20" Margin="120,0,0,0" Width="100" Background="Gray" Grid.Column="0" Grid.Row="0" FontSize="18" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Left" Margin="0" Orientation="Vertical" >
+                <TextBlock TextAlignment="Center" Margin="0,15,130,0" Height="20" Width="100" Background="Gray" Grid.Column="1" Grid.Row="0" FontWeight="Bold" Text=" High score " Foreground="White" ></TextBlock>
+                <TextBlock Name="bestscore" Foreground="White" TextAlignment="Center" Margin="0,0,130,0" Height="20" Width="100" Background="Gray"  Grid.Column="1" Grid.Row="0" FontSize="18" FontWeight="Bold" ></TextBlock>
+            </StackPanel>
+
+        </DockPanel>
+        <Rectangle Fill="#FFFBECEC"  Grid.Row="1"   />
+        <Polyline Grid.Row="1" Points="0,89 530,89" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="0,4 530,4" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="2,0 2,350" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="530,350 530,0" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="0,346 530,346" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="0,174 530,174" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="0,260 530,260" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="135,0 135,350" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="269,0 269,350" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <Polyline Grid.Row="1" Points="402,0 402,350" Stroke="#FF6E6E6E" StrokeThickness="10">
+        </Polyline>
+        <UniformGrid Grid.Row="1" Name="gridMap" Rows="4" Columns="4" Height="345" >
+
+            <Button x:Name="b00"/>
+            <Button Name="b10"></Button>
+            <Button Name="b20"></Button>
+            <Button Name="b30"></Button>
+            <Button Name="b01"></Button>
+            <Button Name="b11"></Button>
+            <Button Name="b21"></Button>
+            <Button Name="b31"></Button>
+            <Button Name="b02"></Button>
+            <Button Name="b12"></Button>
+            <Button Name="b22"></Button>
+            <Button Name="b32"></Button>
+            <Button Name="b03"></Button>
+            <Button Name="b13"></Button>
+            <Button Name="b23"></Button>
+            <Button Name="b33"></Button>
+        </UniformGrid>
+
+        <StackPanel Grid.Row="2" Height="30" Background="#FFD4C6C6" Orientation="Horizontal">
+            <TextBlock Name="textblockstate"  Margin="150,5,10,0" Height="30" Width="150" Background="Gray" Text=" Welcome to GAME" TextAlignment="Center" IsEnabled="True" Foreground="Black" FontWeight="Bold" FontSize="16" />
+            <RepeatButton Margin="10,5,0,0" Width="100" ToolTip="Resource name: MaterialDesignRaisedButton" Click="RepeatButton_Click">
+                START
+            </RepeatButton>
+        </StackPanel>
+
+    </Grid>
+</Window>
